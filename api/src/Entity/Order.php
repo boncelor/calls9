@@ -5,9 +5,17 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Controller\DeliveryEstimate;
 
 /**
- * @ApiResource()
+ * @ApiResource(collectionOperations={
+ *     "get",
+ *     "post_estimate"={
+ *              "method"="POST",
+ *              "path"="/order/estimate",
+ *              "controller"=DeliveryEstimate::class
+ *           }
+ *     })
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
  */
